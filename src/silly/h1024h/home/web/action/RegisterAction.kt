@@ -11,6 +11,7 @@ import silly.h1024h.home.service.RegisterService
 import silly.h1024h.utils.Util
 import silly.h1024h.isentity.IsEmptyUser
 import silly.h1024h.utils.EmailUtil
+import silly.h1024h.utils.RedisUtil
 
 class RegisterAction : BaseAction(), ModelDriven<User> {
     private val registerService = RegisterService()
@@ -44,6 +45,11 @@ class RegisterAction : BaseAction(), ModelDriven<User> {
         // 用户已存在
         if (registerService.isUser(user)) {
             failData(ErrorEnumMsg.error1000, ErrorEnumParam.error1000)
+            return Action.NONE
+        }
+        // 验证码过期
+        if(RedisUtil.getRu().get(user.getuName()).isNullOrEmpty()) {
+            failData(ErrorEnumMsg.error1006, ErrorEnumParam.error1006)
             return Action.NONE
         }
         // 创建token和时间
@@ -81,11 +87,22 @@ class RegisterAction : BaseAction(), ModelDriven<User> {
                 failData(ErrorEnumMsg.error1005, ErrorEnumParam.error1005)
                 return Action.NONE
             }else{
+                // 用户已存在
+                if (registerService.isUser(user)) {
+                    failData(ErrorEnumMsg.error1000, ErrorEnumParam.error1000)
+                    return Action.NONE
+                }
                 // 发送邮箱验证码
                 val code = EmailUtil.sendCodeEmail(user.getuName())
-
+                // 存储验证码，30分钟失效
+                RedisUtil.getRu().setex(user.getuName(),code,1800)
             }
         }else{
+            // 用户已存在
+            if (registerService.isUser(user)) {
+                failData(ErrorEnumMsg.error1000, ErrorEnumParam.error1000)
+                return Action.NONE
+            }
             // 发送电话验证码
 
         }

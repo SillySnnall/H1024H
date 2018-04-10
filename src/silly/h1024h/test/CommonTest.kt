@@ -3,13 +3,12 @@ package silly.h1024h.test
 import org.apache.commons.beanutils.BeanUtils
 import org.testng.annotations.Test
 import silly.h1024h.entity.User
-import silly.h1024h.utils.EmailUtil
-import silly.h1024h.utils.HibernateUtils
-import silly.h1024h.utils.QqSmsUtil
-import silly.h1024h.utils.Util
+import redis.clients.jedis.Jedis
+import silly.h1024h.utils.*
+
 
 //测试Hibernate框架
-class HibernateTest {
+class CommonTest {
     @Test
     fun add() {
         val session = HibernateUtils.getCurrentSession()
@@ -71,5 +70,13 @@ class HibernateTest {
     @Test
     fun sendEmail(){
         EmailUtil.sendCodeEmail("411600050@qq.com")
+    }
+
+    @Test
+    fun jedis(){
+        val ru = RedisUtil.getRu()
+        ru.setex("qwe","12312",10)
+        val get = ru.get("qwe")
+        System.out.println(get)
     }
 }

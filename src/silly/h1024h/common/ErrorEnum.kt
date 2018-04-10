@@ -7,6 +7,7 @@ object ErrorEnumMsg {
     var error1003: Int = 1003
     var error1004: Int = 1004
     var error1005: Int = 1005
+    var error1006: Int = 1006
 }
 
 object ErrorEnumParam {
@@ -16,4 +17,5 @@ object ErrorEnumParam {
     var error1003: String = "邮箱格式不正确"
     var error1004: String = "电话号码格式不正确"
     var error1005: String = "请填写正确的用户名"
+    var error1006: String = "验证码已过期"
 }
