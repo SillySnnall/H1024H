@@ -10,6 +10,7 @@ import silly.h1024h.entity.User
 import silly.h1024h.home.service.RegisterService
 import silly.h1024h.utils.Util
 import silly.h1024h.isentity.IsEmptyUser
+import silly.h1024h.utils.EmailUtil
 
 class RegisterAction : BaseAction(), ModelDriven<User> {
     private val registerService = RegisterService()
@@ -18,6 +19,9 @@ class RegisterAction : BaseAction(), ModelDriven<User> {
         return user
     }
 
+    /**
+     * 注册
+     */
     fun doRegister(): String {
         // 判空
         val isUser = IsEmptyUser.isUser(user)
@@ -57,6 +61,34 @@ class RegisterAction : BaseAction(), ModelDriven<User> {
         map.remove("uCreateTime")// 移除创建时间
         map.remove("class")// 移除map自带字段
         successData(map)
+        return Action.NONE
+    }
+
+    /**
+     * 发送验证码
+     */
+    fun doSendCode(): String{
+        // 判空
+        val isSendCode = IsEmptyUser.isSendCode(user)
+        if (!isSendCode.isEmpty()) {
+            failData(ErrorEnumMsg.error1002, isSendCode)
+            return Action.NONE
+        }
+        // 电话号码判断
+        if(!Util.isPhone(user.getuName())){
+            // 邮箱判断
+            if(!Util.isEmail(user.getuName())){
+                failData(ErrorEnumMsg.error1005, ErrorEnumParam.error1005)
+                return Action.NONE
+            }else{
+                // 发送邮箱验证码
+                val code = EmailUtil.sendCodeEmail(user.getuName())
+
+            }
+        }else{
+            // 发送电话验证码
+
+        }
         return Action.NONE
     }
 }

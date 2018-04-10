@@ -34,4 +34,20 @@ object Util {
         val pattern = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$"
         return Pattern.matches(pattern, email)
     }
+
+    /**
+     * 逐位随机取值，转成字符串，然后再拼接成6位的字符串
+     *
+     * @return 6位字符串
+     */
+    fun getRandNumber(): String {
+        val numStr = StringBuffer()
+        var num: Int
+        for (i in 0..5) {
+            // Math.random() 随机出0-1之间的实数，返回值是一个double 类型的
+            num = (Math.random() * 10).toInt()
+            numStr.append(num.toString())
+        }
+        return numStr.toString()
+    }
 }

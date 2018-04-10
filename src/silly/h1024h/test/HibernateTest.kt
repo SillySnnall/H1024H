@@ -3,7 +3,9 @@ package silly.h1024h.test
 import org.apache.commons.beanutils.BeanUtils
 import org.testng.annotations.Test
 import silly.h1024h.entity.User
+import silly.h1024h.utils.EmailUtil
 import silly.h1024h.utils.HibernateUtils
+import silly.h1024h.utils.QqSmsUtil
 import silly.h1024h.utils.Util
 
 //测试Hibernate框架
@@ -60,5 +62,14 @@ class HibernateTest {
     fun email(){
         val email = Util.isPhone("15432121421")
         System.out.println(email)
+    }
+    @Test
+    fun sendSMS(){
+        QqSmsUtil.sendSMS()
+    }
+
+    @Test
+    fun sendEmail(){
+        EmailUtil.sendCodeEmail("411600050@qq.com")
     }
 }
