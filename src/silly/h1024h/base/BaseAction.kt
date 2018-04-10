@@ -3,8 +3,6 @@ package silly.h1024h.base
 import com.google.gson.Gson
 import com.opensymphony.xwork2.ActionSupport
 import org.apache.struts2.ServletActionContext
-import silly.h1024h.entity.FailData
-import silly.h1024h.entity.SuccessData
 
 open class BaseAction : ActionSupport() {
 
@@ -21,6 +19,16 @@ open class BaseAction : ActionSupport() {
     fun successData(map: Map<String, Any>) {
         val writer = ServletActionContext.getResponse().writer
         writer.write(Gson().toJson(SuccessData(0, "msgok", map)))
+        writer.flush()
+        writer.close()
+    }
+
+    /**
+     * 返回成功的数据根集合
+     */
+    fun successData(list: List<Any>) {
+        val writer = ServletActionContext.getResponse().writer
+        writer.write(Gson().toJson(SuccessDataList(0, "msgok", list)))
         writer.flush()
         writer.close()
     }

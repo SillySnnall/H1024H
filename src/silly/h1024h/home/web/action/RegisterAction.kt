@@ -15,7 +15,7 @@ import silly.h1024h.utils.RedisUtil
 
 class RegisterAction : BaseAction(), ModelDriven<User> {
     private val registerService = RegisterService()
-    val user = User()
+    private val user = User()
     override fun getModel(): User {
         return user
     }

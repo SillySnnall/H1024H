@@ -4,6 +4,8 @@ import org.apache.commons.beanutils.BeanUtils
 import org.testng.annotations.Test
 import silly.h1024h.entity.User
 import redis.clients.jedis.Jedis
+import silly.h1024h.entity.ImgRes
+import silly.h1024h.home.dao.ImgResDao
 import silly.h1024h.utils.*
 
 
@@ -11,15 +13,19 @@ import silly.h1024h.utils.*
 class CommonTest {
     @Test
     fun add() {
+        for (i in 0..20) {
         val session = HibernateUtils.getCurrentSession()
         val tx = session.beginTransaction()
-        //----------------------------------------------
-        val user = User(0, "hahaha", "123123", "万物", "lisi@163.com",
-                "110", 1, "male", "xxxxxxxx")
-        session.save(user)
-        //----------------------------------------------
+            //----------------------------------------------
+//        val user = User(0, "hahaha", "123123", "万物", "lisi@163.com",
+//                "110", 1, "male", "xxxxxxxx")
+//        session.save(user)
+            val imgRes = ImgRes("zxzxzxewewzxz$i", 1, 2)
+            session.save(imgRes)
+            //----------------------------------------------
         tx.commit()
         session.close()
+        }
     }
 
     @Test
@@ -43,6 +49,16 @@ class CommonTest {
     }
 
     @Test
+    fun limit() {
+        val session = HibernateUtils.openSession()
+        val query = session.createQuery("from ImgRes where irCover = ?").setParameter(0, 0)
+        query.firstResult = 0
+        query.maxResults = 1
+        val list = query.list() as List<ImgRes>
+        System.out.println(list)
+    }
+
+    @Test
     fun UUID() {
         val randomUUID = java.util.UUID.randomUUID().toString().replace("-", "")
         System.out.println(randomUUID)
@@ -58,25 +74,27 @@ class CommonTest {
     }
 
     @Test
-    fun email(){
+    fun email() {
         val email = Util.isPhone("15432121421")
         System.out.println(email)
     }
+
     @Test
-    fun sendSMS(){
+    fun sendSMS() {
         QqSmsUtil.sendSMS()
     }
 
     @Test
-    fun sendEmail(){
+    fun sendEmail() {
         EmailUtil.sendCodeEmail("411600050@qq.com")
     }
 
     @Test
-    fun jedis(){
+    fun jedis() {
         val ru = RedisUtil.getRu()
-        ru.setex("qwe","12312",10)
+        ru.setex("qwe", "12312", 10)
         val get = ru.get("qwe")
         System.out.println(get)
     }
+
 }

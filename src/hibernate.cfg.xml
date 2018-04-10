@@ -21,8 +21,8 @@
         <!-- 数据库url -->
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/h1024h</property>
         <!-- 数据库连接用户名 -->
-        <property name="connection.username">admin</property>
         <!-- 数据库连接密码 -->
+        <property name="connection.username">admin</property>
         <property name="connection.password">admin@123</property>
         <!-- 数据库方言
             不同的数据库中,sql语法略有区别. 指定方言可以让hibernate框架在生成sql语句时.针对数据库的方言生成.
@@ -67,5 +67,7 @@
         <mapping class="silly.h1024h.entity.User"/>
         <mapping resource="silly/h1024h/entity/xml/User.hbm.xml"/>
         <mapping resource="silly/h1024h/entity/xml/User.hbm.xml"/>
+        <mapping class="silly.h1024h.entity.ImgRes"/>
+        <mapping resource="silly/h1024h/entity/xml/ImgRes.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="silly.h1024h.entity.ImgRes" table="img_res" schema="h1024h">
+        <id name="irId">
+            <column name="ir_id" sql-type="int(11)"/>
+        </id>
+        <property name="irUrl">
+            <column name="ir_url" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="irType">
+            <column name="ir_type" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="irCover">
+            <column name="ir_cover" sql-type="int(11)" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

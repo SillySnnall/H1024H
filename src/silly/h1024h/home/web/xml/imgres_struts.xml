@@ -12,13 +12,13 @@
              abstract属性:包是否为抽象的; 标识性属性.标识该包不能独立运行.专门被继承
              动态方法 struts-2.5 需要配置这个属性  strict-method-invocation="false"
        -->
-    <package name="hello" namespace="/hello"   strict-method-invocation="false">
+    <package name="imgres" namespace="/imgres" strict-method-invocation="false" extends="struts-default">
         <!-- action元素:配置action类
                 name属性: 决定了Action访问资源名.
                 class属性: action的完整类名
                 method属性: 指定调用Action中的哪个方法来处理请求
          -->
-        <action name="*" class="silly.h1024h.home.web.action.HelloAction" method="{1}" >
+        <action name="*" class="silly.h1024h.home.web.action.ImgResAction" method="{1}">
             <!-- result元素:结果配置
                     name属性: 标识结果处理的名称.与action方法的返回值对应.
                     type属性: 指定调用哪一个result类来处理结果,默认使用转发.

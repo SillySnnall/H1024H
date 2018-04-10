@@ -170,4 +170,20 @@ public class User {
 
         return Objects.hash(uId, uName, uPassword, uDspName, uSex, uPhone, uEmail, uVip, uCreateTime, uToken);
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "uId=" + uId +
+                ", uName='" + uName + '\'' +
+                ", uPassword='" + uPassword + '\'' +
+                ", uDspName='" + uDspName + '\'' +
+                ", uSex=" + uSex +
+                ", uPhone='" + uPhone + '\'' +
+                ", uEmail='" + uEmail + '\'' +
+                ", uVip=" + uVip +
+                ", uCreateTime='" + uCreateTime + '\'' +
+                ", uToken='" + uToken + '\'' +
+                '}';
+    }
 }

@@ -18,6 +18,7 @@
             <file>file://$MODULE_DIR$/src/silly/h1024h/home/web/xml/register_struts.xml</file>
             <file>file://$MODULE_DIR$/src/struts.xml</file>
             <file>jar://$MODULE_DIR$/lib/struts2-core.jar!/struts-default.xml</file>
+            <file>file://$MODULE_DIR$/src/silly/h1024h/home/web/xml/imgres_struts.xml</file>
           </fileset>
           <propertiesKeys disabled="false" />
         </configuration>
