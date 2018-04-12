@@ -12,10 +12,13 @@
             <column name="ir_url" sql-type="varchar(255)" not-null="true"/>
         </property>
         <property name="irType">
-            <column name="ir_type" sql-type="int(11)" not-null="true"/>
+            <column name="ir_type" sql-type="int(11)"/>
         </property>
         <property name="irCover">
-            <column name="ir_cover" sql-type="int(11)" not-null="true"/>
+            <column name="ir_cover" sql-type="int(11)"/>
+        </property>
+        <property name="irDetails">
+            <column name="ir_details" sql-type="varchar(255)" not-null="true"/>
         </property>
     </class>
 </hibernate-mapping>

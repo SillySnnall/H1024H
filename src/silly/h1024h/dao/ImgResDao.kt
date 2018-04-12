@@ -1,8 +1,8 @@
-package silly.h1024h.home.dao
+package silly.h1024h.dao
 
 import silly.h1024h.base.BaseDao
 import silly.h1024h.entity.ImgRes
-import silly.h1024h.home.dao.impl.ImgResDaoImpl
+import silly.h1024h.dao.impl.ImgResDaoImpl
 
 
 class ImgResDao : BaseDao(), ImgResDaoImpl {

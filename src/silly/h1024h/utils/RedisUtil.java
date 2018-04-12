@@ -668,7 +668,7 @@ public class RedisUtil {
 			jedis = pool.getResource();
 			res = jedis.hgetAll(key);
 		} catch (Exception e) {
-			// TODO
+			LOGGER.error(e.getMessage());
 		} finally {
 			returnResource(pool, jedis);
 		}

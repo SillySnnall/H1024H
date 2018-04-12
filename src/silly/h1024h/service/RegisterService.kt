@@ -1,8 +1,8 @@
-package silly.h1024h.home.service
+package silly.h1024h.service
 
 import silly.h1024h.entity.User
-import silly.h1024h.home.dao.RegisterDao
-import silly.h1024h.home.service.impl.RegisterServiceImpl
+import silly.h1024h.dao.RegisterDao
+import silly.h1024h.service.impl.RegisterServiceImpl
 
 class RegisterService : RegisterServiceImpl {
 

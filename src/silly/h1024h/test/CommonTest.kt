@@ -2,10 +2,8 @@ package silly.h1024h.test
 
 import org.apache.commons.beanutils.BeanUtils
 import org.testng.annotations.Test
-import silly.h1024h.entity.User
-import redis.clients.jedis.Jedis
 import silly.h1024h.entity.ImgRes
-import silly.h1024h.home.dao.ImgResDao
+import silly.h1024h.entity.User
 import silly.h1024h.utils.*
 
 
@@ -14,8 +12,8 @@ class CommonTest {
     @Test
     fun add() {
         for (i in 0..20) {
-        val session = HibernateUtils.getCurrentSession()
-        val tx = session.beginTransaction()
+            val session = HibernateUtils.getCurrentSession()
+            val tx = session.beginTransaction()
             //----------------------------------------------
 //        val user = User(0, "hahaha", "123123", "万物", "lisi@163.com",
 //                "110", 1, "male", "xxxxxxxx")
@@ -23,8 +21,8 @@ class CommonTest {
             val imgRes = ImgRes("zxzxzxewewzxz$i", 1, 2)
             session.save(imgRes)
             //----------------------------------------------
-        tx.commit()
-        session.close()
+            tx.commit()
+            session.close()
         }
     }
 
@@ -96,5 +94,4 @@ class CommonTest {
         val get = ru.get("qwe")
         System.out.println(get)
     }
-
 }

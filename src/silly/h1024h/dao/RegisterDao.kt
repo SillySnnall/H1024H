@@ -1,8 +1,8 @@
-package silly.h1024h.home.dao
+package silly.h1024h.dao
 
 import silly.h1024h.base.BaseDao
 import silly.h1024h.entity.User
-import silly.h1024h.home.dao.impl.RegisterDaoImpl
+import silly.h1024h.dao.impl.RegisterDaoImpl
 
 
 class RegisterDao : BaseDao(), RegisterDaoImpl {

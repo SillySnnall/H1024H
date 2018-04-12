@@ -19,6 +19,17 @@ public class User {
     private String uCreateTime = "";
     private String uToken = "";
 
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    private int code = 0;
+
     @Id
     @Column(name = "u_id", nullable = false)
     public int getuId() {

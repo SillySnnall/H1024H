@@ -1,4 +1,4 @@
-package silly.h1024h.home.dao.impl
+package silly.h1024h.dao.impl
 
 import silly.h1024h.entity.User
 

@@ -1,7 +1,6 @@
 package silly.h1024h.isentity
 
 import silly.h1024h.entity.ImgRes
-import silly.h1024h.entity.User
 
 /**
  * User字段判空类

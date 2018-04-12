@@ -13,12 +13,12 @@
       <facet type="Struts2" name="Struts 2">
         <configuration>
           <fileset id="s2fileset" name="My Fileset " removed="false">
-            <file>file://$MODULE_DIR$/src/silly/h1024h/home/web/xml/hello_struts.xml</file>
-            <file>file://$MODULE_DIR$/src/silly/h1024h/home/web/xml/login_struts.xml</file>
-            <file>file://$MODULE_DIR$/src/silly/h1024h/home/web/xml/register_struts.xml</file>
+            <file>file://$MODULE_DIR$/src/silly/h1024h/web/xml/login_struts.xml</file>
+            <file>file://$MODULE_DIR$/src/silly/h1024h/web/xml/register_struts.xml</file>
             <file>file://$MODULE_DIR$/src/struts.xml</file>
             <file>jar://$MODULE_DIR$/lib/struts2-core.jar!/struts-default.xml</file>
-            <file>file://$MODULE_DIR$/src/silly/h1024h/home/web/xml/imgres_struts.xml</file>
+            <file>file://$MODULE_DIR$/src/silly/h1024h/web/xml/imgres_struts.xml</file>
+            <file>file://$MODULE_DIR$/src/silly/h1024h/web/xml/update_struts.xml</file>
           </fileset>
           <propertiesKeys disabled="false" />
         </configuration>
@@ -55,12 +55,12 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="mysql:mysql-connector-java:5.1.46" level="project" />
-    <orderEntry type="library" name="struts" level="project" />
     <orderEntry type="library" name="com.google.code.gson:gson:2.8.2" level="project" />
     <orderEntry type="library" name="commons-beanutils-1.9.3" level="project" />
     <orderEntry type="library" name="commons-logging-1.2" level="project" />
     <orderEntry type="library" name="qcloudsms-1.0.2" level="project" />
     <orderEntry type="library" name="mail" level="project" />
     <orderEntry type="library" name="commons-pool2-2.3" level="project" />
+    <orderEntry type="library" name="update" level="project" />
   </component>
 </module>

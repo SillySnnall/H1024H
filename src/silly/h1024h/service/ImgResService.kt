@@ -1,8 +1,8 @@
-package silly.h1024h.home.service
+package silly.h1024h.service
 
 import silly.h1024h.entity.ImgRes
-import silly.h1024h.home.dao.ImgResDao
-import silly.h1024h.home.service.impl.ImgResServiceImpl
+import silly.h1024h.dao.ImgResDao
+import silly.h1024h.service.impl.ImgResServiceImpl
 
 class ImgResService : ImgResServiceImpl {
     private val imgResDao = ImgResDao()

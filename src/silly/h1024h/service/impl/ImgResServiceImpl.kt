@@ -1,4 +1,4 @@
-package silly.h1024h.home.service.impl
+package silly.h1024h.service.impl
 
 import silly.h1024h.entity.ImgRes
 
