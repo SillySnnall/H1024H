@@ -28,7 +28,7 @@ class RegisterServlet : BaseServlet<User>() {
     override fun doWork(request: HttpServletRequest, response: HttpServletResponse, model: User?) {
         // 判空
         val isUser = IsEmptyUser.isUser(model!!)
-        if (!isUser.isEmpty()) {
+        if (isUser.isNotEmpty()) {
             failData(ErrorEnumMsg.error1002, isUser)
             return
         }

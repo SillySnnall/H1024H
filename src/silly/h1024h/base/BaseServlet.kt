@@ -55,30 +55,40 @@ abstract class BaseServlet<T> : HttpServlet() {
    abstract fun doWork(request: HttpServletRequest, response: HttpServletResponse, model: T?)
 
     private fun config(request: HttpServletRequest, response: HttpServletResponse) {
+        request.characterEncoding = "utf-8"
         response.contentType = "text/json;charset=utf-8"
         response.characterEncoding = "utf-8"
-        response.contentType = "text/json;charset=utf-8"
         response.addHeader("Access-Control-Allow-Origin", "*")
         this.request = request
         this.response = response
     }
 
     /**
-     * 返回成功的数据
+     * 返回成功的Map数据
      */
     fun successData(map: Map<String, Any>) {
         val writer = response.writer
-        writer.write(Gson().toJson(SuccessData(0, "msgok", map)))
+        writer.write(Gson().toJson(SuccessMap(0, "msgok", map)))
         writer.flush()
         writer.close()
     }
 
     /**
-     * 返回成功的数据根集合
+     * 返回成功的List数据
      */
     fun successData(list: List<Any>) {
         val writer = response.writer
         writer.write(Gson().toJson(SuccessDataList(0, "msgok", list)))
+        writer.flush()
+        writer.close()
+    }
+
+    /**
+     * 返回成功的数据
+     */
+    fun successData(str: String) {
+        val writer = response.writer
+        writer.write(Gson().toJson(SuccessData(0, "msgok", str)))
         writer.flush()
         writer.close()
     }

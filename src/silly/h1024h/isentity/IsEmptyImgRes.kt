@@ -7,9 +7,14 @@ import silly.h1024h.entity.ImgRes
  */
 object IsEmptyImgRes {
 
-    fun isCoverImgRes(imgRes: ImgRes): String {
-//        if (imgRes.pageNum()) return "请填写用户名"
-//        if (imgRes.getuPassword().isNullOrEmpty()) return "请填写密码"
+    fun isCover(imgRes: ImgRes): String{
+        if (imgRes.irUrl.isNullOrEmpty()) return "请选择封面图片"
+        return ""
+    }
+
+    fun isCommitImg(imgRes: ImgRes): String {
+        if (imgRes.irDetails.isNullOrEmpty()) return "请填写分组名"
+        if (imgRes.urlJson.isNullOrEmpty()) return "上传图片地址不能为空"
         return ""
     }
 }

@@ -7,15 +7,23 @@ import java.util.Objects;
 @Table(name = "img_res", schema = "h1024h")
 public class ImgRes {
     private int irId;
-    private String irUrl;
-    private Integer irType = 0;// 封面id
-    private Integer irCover = 0;// 是否是封面，1是，0不是
-    private String irDetails;// 备注
+    private String irUrl = "";
+    private int irType = 0;// 封面id
+    private int irCover = 0;// 是否是封面，1是，0不是
+    private String irDetails = "";// 备注
 
 
     private int pageNum = 0;
     private int itemCount = 0;
+    private String urlJson = "";
 
+    public String getUrlJson() {
+        return urlJson;
+    }
+
+    public void setUrlJson(String urlJson) {
+        this.urlJson = urlJson;
+    }
 
     public int getPageNum() {
         return pageNum;
@@ -89,8 +97,8 @@ public class ImgRes {
         if (o == null || getClass() != o.getClass()) return false;
         ImgRes imgRes = (ImgRes) o;
         return irId == imgRes.irId &&
-                irType.equals(imgRes.irType) &&
-                irCover.equals(imgRes.irCover) &&
+                irType == imgRes.irType &&
+                irCover == imgRes.irCover &&
                 Objects.equals(irUrl, imgRes.irUrl) &&
                 Objects.equals(irDetails, imgRes.irDetails);
     }
@@ -101,10 +109,12 @@ public class ImgRes {
         return Objects.hash(irId, irUrl, irType, irCover, irDetails);
     }
 
-    public ImgRes(String irUrl, Integer irType, Integer irCover) {
+
+    public ImgRes(String irUrl, int irType, int irCover, String irDetails) {
         this.irUrl = irUrl;
         this.irType = irType;
         this.irCover = irCover;
+        this.irDetails = irDetails;
     }
 
     public ImgRes() {

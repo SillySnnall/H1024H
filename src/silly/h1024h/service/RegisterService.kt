@@ -1,13 +1,13 @@
 package silly.h1024h.service
 
 import silly.h1024h.entity.User
-import silly.h1024h.dao.RegisterDao
+import silly.h1024h.dao.UserDao
 import silly.h1024h.service.impl.RegisterServiceImpl
 
 class RegisterService : RegisterServiceImpl {
 
 
-    private val registerDao = RegisterDao()
+    private val registerDao = UserDao()
 
     override fun saveUser(user: User): Boolean {
         try {

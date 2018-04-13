@@ -2,6 +2,7 @@ package silly.h1024h.test
 
 import org.apache.commons.beanutils.BeanUtils
 import org.testng.annotations.Test
+import silly.h1024h.dao.ImgResDao
 import silly.h1024h.entity.ImgRes
 import silly.h1024h.entity.User
 import silly.h1024h.utils.*
@@ -18,7 +19,7 @@ class CommonTest {
 //        val user = User(0, "hahaha", "123123", "万物", "lisi@163.com",
 //                "110", 1, "male", "xxxxxxxx")
 //        session.save(user)
-            val imgRes = ImgRes("zxzxzxewewzxz$i", 1, 2)
+            val imgRes = ImgRes("zxzxzxewewzxz$i", 1, 2,"万物")
             session.save(imgRes)
             //----------------------------------------------
             tx.commit()
@@ -93,5 +94,21 @@ class CommonTest {
         ru.setex("qwe", "12312", 10)
         val get = ru.get("qwe")
         System.out.println(get)
+    }
+
+    @Test
+    fun saveImg(){
+        val imgResDao = ImgResDao()
+        val arrayListOf = arrayListOf<ImgRes>()
+        arrayListOf.add(ImgRes("sasas",1,0,"212qwqw"))
+        arrayListOf.add(ImgRes("434343",1,0,"212qwqw"))
+        imgResDao.saveImg(arrayListOf)
+    }
+
+    @Test
+    fun forTest(){
+        for (i in 1..10){
+            System.out.println(i)
+        }
     }
 }

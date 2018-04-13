@@ -13,6 +13,12 @@
           <element id="library" level="module" name="testng" module-name="H1024H" />
           <element id="library" level="project" name="mysql:mysql-connector-java:5.1.46" />
           <element id="library" level="project" name="com.google.code.gson:gson:2.8.2" />
+          <element id="library" level="project" name="update" />
+          <element id="library" level="project" name="commons-pool2-2.3" />
+          <element id="library" level="project" name="mail" />
+          <element id="library" level="project" name="qcloudsms-1.0.2" />
+          <element id="library" level="project" name="commons-beanutils-1.9.3" />
+          <element id="library" level="project" name="commons-logging-1.2" />
         </element>
       </element>
     </root>

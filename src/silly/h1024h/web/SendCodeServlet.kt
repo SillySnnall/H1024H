@@ -27,7 +27,7 @@ class SendCodeServlet : BaseServlet<User>() {
     override fun doWork(request: HttpServletRequest, response: HttpServletResponse, model: User?) {
         // 判空
         val isSendCode = IsEmptyUser.isSendCode(model!!)
-        if (!isSendCode.isEmpty()) {
+        if (isSendCode.isNotEmpty()) {
             failData(ErrorEnumMsg.error1002, isSendCode)
             return
         }

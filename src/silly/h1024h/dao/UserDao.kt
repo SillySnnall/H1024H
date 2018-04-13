@@ -5,7 +5,7 @@ import silly.h1024h.entity.User
 import silly.h1024h.dao.impl.RegisterDaoImpl
 
 
-class RegisterDao : BaseDao(), RegisterDaoImpl {
+class UserDao : BaseDao(), RegisterDaoImpl {
     override fun findFor_uname(user: User): List<User> {
         return getSession().createQuery("from User where uName = ?").setParameter(0, user.getuName()).list() as List<User>
     }
