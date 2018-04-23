@@ -1,0 +1,46 @@
+body {
+    background: black;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul {
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+li {
+    width: 180px;
+    padding: 10px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+li img {
+    width: 380px;
+    height: auto;
+}
+
+button {
+    width: 70%;
+    height: 40px;
+    position: fixed;
+    left: 15%;
+    bottom: 0px;
+    background-color: #7ACFFF;
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    outline: none;
+    border: none;
+    color: #FFF;
+    cursor: pointer;
+}

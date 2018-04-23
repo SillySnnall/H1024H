@@ -32,4 +32,9 @@ interface ImgResDaoImpl {
      * 查询irType最大值
      */
     fun getIrTypeMax():List<ImgRes>
+
+    /**
+     * 查询全部irDetails数据，相同的只会返回一个
+     */
+    fun findAllDetailsOnly(): List<String>
 }

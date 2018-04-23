@@ -6,10 +6,13 @@ import org.apache.commons.fileupload.FileItem
 import org.apache.commons.fileupload.disk.DiskFileItemFactory
 import org.apache.commons.fileupload.servlet.ServletFileUpload
 import silly.h1024h.common.Config
+import silly.h1024h.common.Config.RES_PATH
+import silly.h1024h.common.Config.SERVICE_URL
 import silly.h1024h.dao.ImgResDao
 import silly.h1024h.entity.ImgRes
 import silly.h1024h.service.impl.CommitImgServiceImpl
 import silly.h1024h.service.impl.UpdateServiceImpl
+import silly.h1024h.utils.FileUtil
 import silly.h1024h.utils.Util
 import java.io.File
 import java.io.FileOutputStream
@@ -48,7 +51,11 @@ class CommitImgService : CommitImgServiceImpl {
 
         for (url in urlList) {
             // 判断中是设置封面
-            imgResList.add(ImgRes(url, irType, if (url == imgRes.irUrl) 1 else 0, imgRes.irDetails))
+            val imgResC = ImgRes(url, irType, if (url == imgRes.irUrl) 1 else 0, imgRes.irDetails)
+            val irUrl = imgResC.irUrl
+            imgResC.irUrl = irUrl.replace("/uploadfile", "/res/img")
+            if (!File("$RES_PATH/res/img").exists()) File("$RES_PATH/res/img").mkdirs()// 创建文件夹
+            if (FileUtil.cutFile(RES_PATH + irUrl, RES_PATH + imgResC.irUrl)) imgResList.add(imgResC)
         }
         return imgResDao.saveImg(imgResList)
     }

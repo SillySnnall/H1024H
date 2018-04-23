@@ -9,5 +9,8 @@ interface CommitImgServiceImpl {
      */
     fun saveImg(imgRes: ImgRes):Boolean
 
+    /**
+     * 判断是否有封面
+     */
     fun isHaveCover(irDetails: String):Boolean
 }

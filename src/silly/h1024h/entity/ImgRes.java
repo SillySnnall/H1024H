@@ -119,4 +119,18 @@ public class ImgRes {
 
     public ImgRes() {
     }
+
+    @Override
+    public String toString() {
+        return "ImgRes{" +
+                "irId=" + irId +
+                ", irUrl='" + irUrl + '\'' +
+                ", irType=" + irType +
+                ", irCover=" + irCover +
+                ", irDetails='" + irDetails + '\'' +
+                ", pageNum=" + pageNum +
+                ", itemCount=" + itemCount +
+                ", urlJson='" + urlJson + '\'' +
+                '}';
+    }
 }

@@ -9,6 +9,22 @@ import silly.h1024h.utils.HibernateUtils
 
 
 class ImgResDao : BaseDao(), ImgResDaoImpl {
+    override fun findAllDetailsOnly(): List<String> {
+        val session = HibernateUtils.getCurrentSession()
+        val beginTransaction = session.beginTransaction()
+        return try {
+            val list = session.createQuery("select irDetails from ImgRes GROUP BY irDetails")
+                    .list() as List<String>
+            beginTransaction.commit()
+            list
+        } catch (e: Exception) {
+            e.printStackTrace()
+            beginTransaction.rollback()
+            session.close()
+            arrayListOf()
+        }
+    }
+
     override fun getIrTypeMax(): List<ImgRes> {
         val session = HibernateUtils.getCurrentSession()
         val beginTransaction = session.beginTransaction()
@@ -81,14 +97,36 @@ class ImgResDao : BaseDao(), ImgResDaoImpl {
     }
 
     override fun getCover(pageNum: Int, itemCount: Int): List<ImgRes> {
-        return getSession().createQuery("from ImgRes where irCover = ?").setParameter(0, 1)
-                .setFirstResult(pageNum)
-                .setMaxResults(itemCount).list() as List<ImgRes>
+        val session = HibernateUtils.getCurrentSession()
+        val beginTransaction = session.beginTransaction()
+        return try {
+            val list = session.createQuery("from ImgRes where irCover = ?").setParameter(0, 1)
+                    .setFirstResult(pageNum)
+                    .setMaxResults(itemCount).list() as List<ImgRes>
+            beginTransaction.commit()
+            list
+        } catch (e: Exception) {
+            beginTransaction.rollback()
+            session.close()
+            arrayListOf()
+        }
     }
 
     override fun getDetailed(irType: Int, pageNum: Int, itemCount: Int): List<ImgRes> {
-        return getSession().createQuery("from ImgRes where irType = ?").setParameter(0, irType)
-                .setFirstResult(pageNum)
-                .setMaxResults(itemCount).list() as List<ImgRes>
+        val session = HibernateUtils.getCurrentSession()
+        val beginTransaction = session.beginTransaction()
+        return try {
+            val list = session.createQuery("from ImgRes where irType = ?").setParameter(0, irType)
+                    .setFirstResult(pageNum)
+                    .setMaxResults(itemCount).list() as List<ImgRes>
+            beginTransaction.commit()
+            list
+        } catch (e: Exception) {
+            beginTransaction.rollback()
+            session.close()
+            arrayListOf()
+        }
     }
+
+
 }

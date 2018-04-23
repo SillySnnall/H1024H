@@ -1,6 +1,7 @@
 package silly.h1024h.base
 
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import org.apache.commons.beanutils.BeanUtils
 
 import javax.servlet.ServletException

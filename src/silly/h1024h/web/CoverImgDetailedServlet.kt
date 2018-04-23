@@ -9,7 +9,7 @@ import javax.servlet.annotation.WebServlet
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
-@WebServlet(name = "CoverImgServlet", urlPatterns = ["/getCoverImgDetailed"])
+@WebServlet(name = "CoverImgDetailedServlet", urlPatterns = ["/getCoverImgDetailed"])
 class CoverImgDetailedServlet : BaseServlet<ImgRes>() {
     private val imgResService = ImgResService()
     override fun getModel(): ImgRes? {

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/assets/flow_layout.css" type="text/css">
+    <link rel="stylesheet" href="css/update_img.css" type="text/css">
+    <script type="text/javascript" src="js/assets/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/assets/bootstrap.min.css" type="text/css">
+    <script type="text/javascript" src="js/update_img.js"></script>
+</head>
+<body>
+<div class="btn-div">
+    <form id="uploadForm" method="post" enctype="multipart/form-data" class="btn-form">
+        <a href="javascript:" class="add-img"><input type="file" accept="image/png, image/jpeg" multiple="multiple"
+                                                     id="file" name="fileupload"/></a>
+        <img class="btn-form"/>
+        <a href="javascript:" class="up-img"><input type="button" id="commit"/></a>
+    </form>
+</div>
+<div id="main"></div>
+
+<img id="selected_img" style="width:100px;position:fixed; z-index: 2; left:10px; top:40%;"/>
+
+<div id="div_input" style="width: 150px;position:fixed; z-index: 2;right: 10px;top: 30%; display: none">
+    <input type="text" class="form-control" id="group_input" placeholder="请输入分组名称"/>
+    <p id="group_content"></p>
+</div>
+</body>
+</html>

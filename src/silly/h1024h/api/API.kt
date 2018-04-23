@@ -9,7 +9,8 @@ object InterF {
             "getCoverImg" to "获取封面图片",
             "getCoverImgDetailed" to "获取这个封面中的详细图片",
             "updateImg" to "上传图片",
-            "commitImg" to "提交上传图片"
+            "commitImg" to "提交上传图片",
+            "getIrDetails" to "获取分组名字"
     )
 }
 // 参数名 to 作用,是否必传,备注
@@ -43,5 +44,5 @@ object Param {
             "urlJson" to "已上传的图片url集合json数据,是,"
     )
 
-
+    val getIrDetails = mapOf<String,String>()
 }

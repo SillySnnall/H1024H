@@ -50,11 +50,14 @@ class CommonTest {
     @Test
     fun limit() {
         val session = HibernateUtils.openSession()
-        val query = session.createQuery("from ImgRes where irCover = ?").setParameter(0, 0)
+        val query = session.createQuery("select irUrl,irType,irDetails from ImgRes where irCover = ?").setParameter(0, 1)
         query.firstResult = 0
-        query.maxResults = 1
-        val list = query.list() as List<ImgRes>
-        System.out.println(list)
+        query.maxResults = 15
+        val list = query.list()
+        for (listx in list){
+            System.out.println(listx)
+        }
+
     }
 
     @Test
@@ -110,5 +113,43 @@ class CommonTest {
         for (i in 1..10){
             System.out.println(i)
         }
+    }
+
+    @Test
+    fun to1(){
+        System.out.println(doubleTo1("1"))
+        System.out.println(doubleTo1("12"))
+        System.out.println(doubleTo1("12."))
+        System.out.println(doubleTo1("12.7"))
+        System.out.println(doubleTo1("12.95"))
+        System.out.println(doubleTo1("12.9596521"))
+    }
+
+    /**
+     * 保留一位小数
+     */
+    fun doubleTo1(num: String): String {
+        if (num.isEmpty()) {
+            return ""
+        }
+        if (!num.contains(".")) {
+            return "$num.0"
+        }
+
+        if (num.substring(num.indexOf("."), num.length).length > 2) {
+            return num.substring(0, num.indexOf(".") + 2)
+        }
+
+        if (num.indexOf(".") == num.length - 1) {
+            return num.substring(0, num.indexOf(".")) + ".0"
+        }
+
+        return num
+    }
+
+    @Test
+    fun findIrDetils(){
+        val findAllDetailsOnly = ImgResDao().findAllDetailsOnly()
+        System.out.println(findAllDetailsOnly)
     }
 }

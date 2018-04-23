@@ -1,0 +1,44 @@
+.add-img {
+    display: inline-block;
+    background-image: url(../images/add.png);
+    height: 48px;
+    width: 48px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.add-img input {
+    opacity: 0;
+    height: 38px;
+    width: 38px;
+}
+
+.up-img {
+    display: inline-block;
+    background-image: url(../images/up.png);
+    height: 48px;
+    width: 48px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.up-img input {
+    opacity: 0;
+    height: 38px;
+    width: 38px;
+}
+
+.btn-form {
+    display: inline;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.btn-div {
+    margin: 50px auto;
+}
+
+body {
+    background: black;
+    text-align: center
+}

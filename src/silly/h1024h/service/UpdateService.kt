@@ -15,7 +15,8 @@ class UpdateService : UpdateServiceImpl {
     override fun updateImg(request: HttpServletRequest): List<String> {
         //获得磁盘文件条目工厂
         val factory = DiskFileItemFactory()
-        val imgDir = "/res/img"
+//        val imgDir = "/res/img"
+        val imgDir = "/uploadfile"
         //获取文件需要上传到的路径
         val path = request.getRealPath(imgDir)
         val file = File(path)
