@@ -1,4 +1,3 @@
-
 var serviceUrl = "http://localhost:8080";
 $(document).ready(function () {
 
@@ -21,7 +20,7 @@ $(document).ready(function () {
             isRequest = false;
             var irType = window.location.search;
             irType = irType.substring(irType.indexOf("?") + 1, irType.length);
-            var data = "irType=" + irType +"&pageNum=" + page + "&itemCount=15";
+            var data = "irType=" + irType + "&pageNum=" + page + "&itemCount=15";
             var xhr = new XMLHttpRequest();
             xhr.open("POST", serviceUrl + "/getCoverImgDetailed", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");  // 添加http头，发送信息至服务器时内容编码类型
@@ -46,7 +45,7 @@ $(document).ready(function () {
 
     function showCoverImg(data) {
         for (var i = 0; i < data.length; i++) {
-            water.add(data[i].irUrl, data[i].irType);
+            water.add(data[i].irUrl);
             water.li.find("img").load(function () {
                 water.minTop().calc($(this).parent().outerHeight()).move($(this).parent());
             });
@@ -73,9 +72,15 @@ $(document).ready(function () {
     });
 });
 
-// 封面点击事件
-function imgOnclick(irType) {
+// 详情图片点击事件
+function imgOnclick(url) {
+    $("#full_img").attr("src", url);
+    $("#full_show_img").css('display', 'block');
+}
 
+// 关闭大图
+function closeFullImg() {
+    $("#full_show_img").css('display', 'none');
 }
 
 function Water(width) {
@@ -92,8 +97,8 @@ Water.prototype = {
         $("ul").css("width", this.wUl);
         return this;
     },
-    add: function (url, irType) {
-        this.li = $("<li><img src='" + serviceUrl + url + "' onclick='imgOnclick(" + irType + ") '></li>");
+    add: function (url) {
+        this.li = $("<li><img src='" + serviceUrl + url + "' onclick='imgOnclick(\"" + serviceUrl + url + "\") '></li>");
         $("ul").append(this.li);
         return this;
     },
