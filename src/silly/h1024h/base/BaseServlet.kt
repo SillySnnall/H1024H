@@ -33,16 +33,20 @@ abstract class BaseServlet<T> : HttpServlet() {
             val map = HashMap<String, Any>()
             val mapParam = request.parameterMap
             val set = mapParam.keys
+            System.out.println("----------Start----------")
+            System.out.println("URL:${request.requestURL}")
             for (aSet in set) {
                 val key = aSet as String
                 val value = request.getParameter(key)
                 map[key] = value
+                System.out.println("$key:$value")
             }
-            if (getModel() != null){
+            System.out.println("----------End----------")
+            if (getModel() != null) {
                 val model = getModel()
                 BeanUtils.populate(model, map)
                 doWork(request, response, model)
-            }else{
+            } else {
                 doWork(request, response, null)
             }
         } catch (e: IllegalAccessException) {
@@ -53,7 +57,7 @@ abstract class BaseServlet<T> : HttpServlet() {
 
     }
 
-   abstract fun doWork(request: HttpServletRequest, response: HttpServletResponse, model: T?)
+    abstract fun doWork(request: HttpServletRequest, response: HttpServletResponse, model: T?)
 
     private fun config(request: HttpServletRequest, response: HttpServletResponse) {
         request.characterEncoding = "utf-8"

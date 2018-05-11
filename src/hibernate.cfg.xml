@@ -66,10 +66,7 @@
          -->
         <mapping class="silly.h1024h.entity.User"/>
         <mapping resource="silly/h1024h/entity/xml/User.hbm.xml"/>
-        <mapping resource="silly/h1024h/entity/xml/User.hbm.xml"/>
         <mapping class="silly.h1024h.entity.ImgRes"/>
-        <mapping resource="silly/h1024h/entity/xml/ImgRes.hbm.xml"/>
-        <mapping resource="silly/h1024h/entity/xml/ImgRes.hbm.xml"/>
         <mapping resource="silly/h1024h/entity/xml/ImgRes.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

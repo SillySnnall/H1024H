@@ -9,6 +9,7 @@ object ErrorEnumMsg {
     var error1005: Int = 1005
     var error1006: Int = 1006
     var error1007: Int = 1007
+    var error1008: Int = 1008
 }
 
 object ErrorEnumParam {
@@ -20,4 +21,5 @@ object ErrorEnumParam {
     var error1005: String = "请填写正确的用户名"
     var error1006: String = "验证码已过期"
     var error1007: String = "上传失败"
+    var error1008: String = "计数失败"
 }

@@ -9,6 +9,8 @@ import silly.h1024h.utils.HibernateUtils
 
 
 class ImgResDao : BaseDao(), ImgResDaoImpl {
+
+
     override fun findAllDetailsOnly(): List<String> {
         val session = HibernateUtils.getCurrentSession()
         val beginTransaction = session.beginTransaction()
@@ -84,7 +86,7 @@ class ImgResDao : BaseDao(), ImgResDaoImpl {
             for (imgRes in imgResList) {
                 session = HibernateUtils.getCurrentSession()
                 beginTransaction = session.beginTransaction()
-                session.save(imgRes)
+                session.saveOrUpdate(imgRes)
                 beginTransaction.commit()
             }
             true
@@ -129,4 +131,21 @@ class ImgResDao : BaseDao(), ImgResDaoImpl {
     }
 
 
+    override fun findByIrCoverIrType(irCover: Int, irType: Int): List<ImgRes> {
+        val session = HibernateUtils.getCurrentSession()
+        val beginTransaction = session.beginTransaction()
+        return try {
+            val list = session.createQuery("from ImgRes where irCover = ? and irType = ?")
+                    .setParameter(0, irCover)
+                    .setParameter(1, irType)
+                    .list() as List<ImgRes>
+            beginTransaction.commit()
+            list
+        } catch (e: Exception) {
+            e.printStackTrace()
+            beginTransaction.rollback()
+            session.close()
+            arrayListOf()
+        }
+    }
 }

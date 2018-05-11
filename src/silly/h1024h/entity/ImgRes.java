@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "img_res", schema = "h1024h")
+@Table(name = "img_res", schema = "h1024h", catalog = "")
 public class ImgRes {
     private int irId;
     private String irUrl = "";
@@ -16,6 +16,17 @@ public class ImgRes {
     private int pageNum = 0;
     private int itemCount = 0;
     private String urlJson = "";
+    private long irHotCount;
+
+    public ImgRes(String irUrl, int irType, int irCover, String irDetails) {
+        this.irUrl = irUrl;
+        this.irType = irType;
+        this.irCover = irCover;
+        this.irDetails = irDetails;
+    }
+
+    public ImgRes() {
+    }
 
     public String getUrlJson() {
         return urlJson;
@@ -109,17 +120,6 @@ public class ImgRes {
         return Objects.hash(irId, irUrl, irType, irCover, irDetails);
     }
 
-
-    public ImgRes(String irUrl, int irType, int irCover, String irDetails) {
-        this.irUrl = irUrl;
-        this.irType = irType;
-        this.irCover = irCover;
-        this.irDetails = irDetails;
-    }
-
-    public ImgRes() {
-    }
-
     @Override
     public String toString() {
         return "ImgRes{" +
@@ -132,5 +132,15 @@ public class ImgRes {
                 ", itemCount=" + itemCount +
                 ", urlJson='" + urlJson + '\'' +
                 '}';
+    }
+
+    @Basic
+    @Column(name = "ir_hot_count", nullable = false)
+    public long getIrHotCount() {
+        return irHotCount;
+    }
+
+    public void setIrHotCount(long irHotCount) {
+        this.irHotCount = irHotCount;
     }
 }

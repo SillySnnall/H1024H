@@ -37,4 +37,9 @@ interface ImgResDaoImpl {
      * 查询全部irDetails数据，相同的只会返回一个
      */
     fun findAllDetailsOnly(): List<String>
+
+    /**
+     * 根据irCover，irType查询数据
+     */
+    fun findByIrCoverIrType(irCover: Int, irType: Int):List<ImgRes>
 }
